@@ -1,0 +1,6 @@
+[submodule "grpc"]
+	path = grpc
+	url = https://github.com/grpc/grpc.git
+[submodule "uC-sdk"]
+	path = uC-sdk
+	url = https://github.com/grumpycoders/uC-sdk.git
