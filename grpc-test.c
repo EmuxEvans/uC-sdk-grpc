@@ -22,9 +22,8 @@
 #include <lwip/timers.h>
 #include <netif/etharp.h>
 #include <netif/interface.h>
-#include <webserver/httpd.h>
-#include <echo/echo.h>
 #include <lwip/dhcp.h>
+#include <grpc/grpc.h>
 
 #define LED1_wire make_pin(GPIO_PORT_B, 18)
 #define LED2_wire make_pin(GPIO_PORT_B, 20)
@@ -139,13 +138,13 @@ int main() {
     register_devfs();
     register_stdio_devices();
     register_semifs();
-    printf("Hello world - from stdio!\r\n");
-    fflush(stdout);
     setupLEDs();
     litLED(1, 0);
     litLED(2, 0);
     litLED(3, 0);
     litLED(4, 0);
+
+    grpc_init();
 
     BoardConsolePuts("Creating simple tasks.");
     xTaskCreate(ledTask, (signed char *) "led", configMINIMAL_STACK_SIZE, (void *)NULL, tskIDLE_PRIORITY, NULL);
@@ -153,5 +152,8 @@ int main() {
     BoardConsolePuts("Scheduler starting.");
     vTaskStartScheduler();
     BoardConsolePuts("Scheduler exitting.");
+
+    grpc_shutdown();
+
     return 0;
 }
