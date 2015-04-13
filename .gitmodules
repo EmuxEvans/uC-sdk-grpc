@@ -4,3 +4,6 @@
 [submodule "uC-sdk"]
 	path = uC-sdk
 	url = https://github.com/grumpycoders/uC-sdk.git
+[submodule "zlib"]
+	path = zlib
+	url = https://github.com/madler/zlib.git

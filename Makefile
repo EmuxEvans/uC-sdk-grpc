@@ -75,7 +75,7 @@ GRPC_MAKE_OPTIONS += CC=$(TARGET_CC) AR=$(TARGET_AR)
 GRPC_CPPFLAGS = \
 -ffunction-sections -Wall -Werror $(addprefix -I, $(TARGET_INCLUDES)) \
 $(TARGET_CPPFLAGS) -include $(CURDIR)/uC-sdk-grpc-defines.h -I$(CURDIR)/grpc \
-
+-I$(CURDIR)/zlib
 
 grpc:
 	$(E) "[MAKE]   Entering grpc"
